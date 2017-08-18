@@ -1,0 +1,10 @@
+# Virtualenv
+Include
+Lib
+Scripts
+tcl
+pip-selfcheck.json
+.Python
+.DS_Store
+bin
+include

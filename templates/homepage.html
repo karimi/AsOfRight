@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>NYC As Is</title>
+    <meta content="width=device-width,initial-scale=1" name=viewport>
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css')}}" rel=stylesheet>
+    <link href="{{ url_for('static',filename='css/theme_transparent.css')}}" rel=stylesheet>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico')}}">
+    <style>
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100%; }
+      #wrapper { position: relative; height: 100%; }
+      #over_map { position: absolute; top:-50px; width: 100%; background-color: transparent; z-index: 99; }
+      #over_map_middle { position: absolute; background-color: transparent; top: 60%; left: 10px; z-index: 99; }
+      #over_map.expand {top: 0px; -webkit-transition: all 0.4s ease; transition: all 0.4s ease;}
+
+    </style>
+    <title>AsIs.NYC-Map</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script type="text/javascript">
+    $(window).load(function(){
+      $(document).ready(function() {
+        var map = new google.maps.Map(document.getElementById('map_canvas'), { center: new google.maps.LatLng(40.755690, -73.975938), styles:Style, zoom:13, disableDefaultUI: true });
+    });
+    });
+    </script>
+
+    <script>
+    var Style = (function() {
+          var Style = null;
+          $.ajax({
+              'async': false,
+              'global': false,
+              'url': "{{ url_for('static',filename='js/MapStyle.json')}}",
+              'dataType': "json",
+              'success': function (data) {
+              Style = data;
+              console.log(Style);
+              }
+          });
+          return Style;
+      })();
+      </script>
+
+  </head>
+
+
+  <body>
+
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"> </script>
+  <div id="wrapper">
+
+      <div id="map_canvas"></div>
+
+      <div id="over_map">{% include 'includes/header_div.html' %}</div>
+
+      <div id="over_map_middle">
+        <h1 style="color:blue; display: inline;
+    background: #fff;
+    font-size: 2.5em;
+    line-height: 2.2em; white-space: nowrap;"><span>see New York city, <br/> as it is now!</span></h1>
+        <!--<svg width="100" height="50">
+                    <mask id="cutouttext">
+                        <rect width="100" height="50" x="0" y="0"                   fill="white" />
+                    <text text-anchor="middle" x="50" y="35" style="font-size: 40px;">abssb</text>
+                    </mask>
+                    <rect width="100" height="50" x="0" y="0" fill="white" mask="url(#cutouttext)" />
+        </svg>-->
+
+      </div>
+
+<script type="text/javascript">
+    $(document).click(function(){
+    $('#over_map').addClass('expand');
+    $('#over_map_middle').animate({width:'toggle'},400);
+    $(this).fadeOut();
+    $('#over_map_middle').remove();
+});
+</script>
+
+
+  </div>
+  {% include 'includes/scripts_div.html' %}
+  </body>
+
+
+
+</html>

@@ -1,0 +1,1 @@
+http://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/nybb/FeatureServer/0/query?where=1=1&outFields=*&geometryPrecision=8&outSR=4326&f=geojson

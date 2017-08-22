@@ -1,0 +1,14 @@
+http://www.billdwhite.com/wordpress/2015/01/12/d3-in-3d-combining-d3-js-and-three-js/
+
+https://www.toptal.com/javascript/a-map-to-perfection-using-d3-js-to-make-beautiful-web-maps
+
+http://scribu.net/blog/3d-maps-using-d3-and-three.js.html
+
+https://bl.ocks.org/mbostock
+
+https://github.com/jdomingu/ThreeGeoJSON
+
+http://maptime-ams.github.io/geojson-3d/
+
+extruded buildings: https://www.mapbox.com/mapbox-gl-js/example/3d-buildings/
+OSM: http://osmbuildings.org/examples/
